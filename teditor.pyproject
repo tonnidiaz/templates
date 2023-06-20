@@ -1,0 +1,4 @@
+{
+    "files": ["main.py", "main.qml"],
+    "qmlImportPaths": ["/home/tonni/Documents/RF/Desktop/qt/python/teditor/.venv/lib/python3.10/site-packages/PySide6/Qt/qml"]
+}
