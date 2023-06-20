@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "deploy": "pyside6-deploy main.py",
+        "deploy-keep": "pyside6-deploy main.py --keep-deployment-files"
+    }
+}

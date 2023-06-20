@@ -1,4 +1,7 @@
 {
-    "files": ["main.py", "main.qml"],
-    "qmlImportPaths": ["/home/tonni/Documents/RF/Desktop/qt/python/teditor/.venv/lib/python3.10/site-packages/PySide6/Qt/qml"]
+    "files": ["main.qml","views/HomeView.qml","main.py",
+    "views/AboutView.qml","components/Sidenav.qml",
+    "assets/icons/slideshow.svg", "assets/icons/home.svg",
+    "assets/icons/info.svg"],
+    "qmlImportPaths": ["components/Sidenav.qml","assets/icons/slideshow.svg","main.qml","views/HomeView.qml","main.py","assets/icons/info.svg","assets/icons/home.svg","views/AboutView.qml","assets.qrc"]
 }

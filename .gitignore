@@ -71,6 +71,7 @@ CMakeLists.txt.user*
 # --------
 *.dll
 *.exe
+*.bin
 .venv
 .env
 dist

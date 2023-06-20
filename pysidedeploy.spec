@@ -24,7 +24,7 @@ android_packages = buildozer==1.5.0,cython==0.29.33
 [qt]
 # comma separated path to qml files required
 # normally all the qml files are added automatically
-qml_files = main.qml
+qml_files = main.qml,views/HomeView.qml,views/AboutView.qml,components/Sidenav.qml
 # excluded qml plugin binaries
 excluded_qml_plugins = QtCharts,QtQuick3D,QtSensors,QtTest,QtWebEngine
 # path to pyside wheel
