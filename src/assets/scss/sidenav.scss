@@ -1,0 +1,55 @@
+@import "./colors";
+@import "./vars";
+
+.sidenav {
+
+  display: flex;
+    background-color: $color-header;
+    z-index: 2; //M
+    align-items: center;
+    justify-content: space-between;
+    width: $tbar-h;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: $tbar-h 0px;
+    flex-direction: column;
+    align-content: center;
+    white-space: nowrap !important;
+    flex-wrap: nowrap !important;
+    ul.nav-menu{
+        display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    }
+    .nav-item * {
+      color: $color-white-2 !important;
+    }
+    .nav {
+      white-space: nowrap !important;
+     flex-wrap :nowrap !important;
+      flex-direction: column;
+    }
+    .nav-item {
+      //margin: 10px 0;
+  
+      font-size: 20px;
+      .fal {
+        font-weight: 500;
+      }
+    }
+    button, .nav-item {
+      width: 100% !important;
+      text-align: center;
+      padding: 5px 0;
+      &:hover,
+      &:active {
+        background-color: #444444;
+        box-shadow: none !important;
+        cursor: pointer
+      }
+      border-radius: 0 !important;
+  }
+  }

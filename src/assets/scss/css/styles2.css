@@ -1,0 +1,90 @@
+.wrap {
+  flex-wrap: wrap !important;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Layout {
+  min-height: 100vh;
+}
+.Layout:not(.light) {
+  background-color: #0a0a09 !important;
+  color: #fff !important;
+}
+.Layout:not(.light) header {
+  background-color: #0a0a09 !important;
+}
+.Layout:not(.light) .navbar-nav,
+.Layout:not(.light) .nav-link {
+  color: rgb(201, 201, 201);
+}
+.Layout:not(.light) h1,
+.Layout:not(.light) h2,
+.Layout:not(.light) h3,
+.Layout:not(.light) h4,
+.Layout:not(.light) h5,
+.Layout:not(.light) h6 {
+  color: white;
+  margin-bottom: 0;
+}
+.Layout.light {
+  background-color: #fff !important;
+  color: black !important;
+}
+.Layout.light .navbar-nav,
+.Layout.light .nav-link {
+  color: hsl(0, 0%, 13%) !important;
+}
+.Layout.light header {
+  background-color: #fff !important;
+}
+
+html,
+body {
+  background-color: #0a0a09;
+}
+
+.tag {
+  background-color: rgb(41, 41, 41);
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+}
+.tag:hover {
+  opacity: 0.7;
+}
+
+._btn {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0 2px;
+}
+._btn:focus, ._btn:active, ._btn:visited {
+  outline: 1.8px solid rgb(92, 97, 99);
+}
+
+#paypal {
+  z-index: 0 !important;
+}
+#paypal * {
+  z-index: 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0;
+}/*# sourceMappingURL=styles2.css.map */

@@ -1,0 +1,120 @@
+@import "./vars";
+@import "./colors";
+
+//@import "@material-design-icons/font";
+
+body { 
+  
+ 
+}
+
+.wrap{
+  flex-wrap: wrap !important;
+}
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Layout {
+  min-height: 100vh;
+  &:not(.light) {
+    header {
+      background-color: $color-bg !important;
+    }
+    .navbar-nav,
+    .nav-link {
+      color: rgb(201, 201, 201);
+    }
+    background-color: $color-bg !important; //$color-bg !important;//#080e16 !important;
+    color: #fff !important;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: white;
+      margin-bottom: 0;
+    }
+  }
+
+  &.light {
+    background-color: #fff !important;
+    color: black !important;
+
+    .navbar-nav,
+    .nav-link {
+      color: hsl(0, 0%, 13%) !important;
+    }
+    header{
+      background-color: #fff !important;
+    }
+  }
+  
+}
+
+html,
+body {
+  background-color: $color-bg;
+}
+
+.tag {
+  background-color: $color-dark-2;
+  border-radius: 5px;
+  padding: 1px 5px;
+  font-size: 14px;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  gap: 4px;
+  flex-direction: row;
+  align-items: center;
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+._btn {
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0 2px;
+  &:focus,
+  &:active,
+  &:visited {
+    outline: 1.8px solid $color-dark-4;
+  }
+}
+
+
+.upcoming-tag{
+}
+
+
+#paypal{
+  z-index: 0 !important;
+  *{
+    z-index: 0 !important;
+
+  }
+  
+}
+
+h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-bottom: 0;
+    }
+
+#player-wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  video{
+    width: 100%;
+    height: auto;
+  }
+}

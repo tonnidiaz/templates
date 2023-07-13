@@ -1,0 +1,117 @@
+$slot-h: 40px;
+$timeline-bg: #202020;
+$timeline-wrap-bg: #202020;
+#timeline {
+  background-color: $timeline-bg;
+  height: calc(($slot-h * 2) + 40px);
+  min-width: 1000px;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  position: relative;
+  padding: 0 4px;
+  user-select: none;
+  *{
+    user-select: none !important;
+  }
+  cursor: move;
+  .timer {
+    position: absolute;
+    .timer-knob {
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      background-color: rgb(122, 122, 122);
+      border-radius: 4px;
+      left: -6px;
+      cursor: pointer;
+
+      &#end-timer-knob {
+        background-color: red;
+      }
+      &#start-timer-knob {
+        background-color: green;
+      }
+    }
+    .timer-line {
+      height: 200px;
+      width: 2px;
+      background-color: rgb(161, 161, 161);
+    }
+  }
+  #ticks {
+    user-select: none;
+    background-color: #303030;
+    padding: 2px 0;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    .tick {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: monospace !important;
+      overflow: visible;
+      width: 2px;
+      * {
+        font-family: monospace !important;
+      }
+    }
+    .marker {
+      width: 2px;
+      height: 5px;
+      background-color: white;
+    }
+  }
+}
+
+.timeline-wrap {
+  background-color: $timeline-wrap-bg;
+  align-items: flex-end;
+}
+#slots {
+    //width: 0;
+  .slot {
+    position: relative;
+    margin: 3px 0;
+    height: $slot-h;
+    //width: 0;
+    //width: 100px;
+    background-color: darkcyan;
+    &#audio-slot {
+      background-color: rgb(255, 94, 0);
+    }
+  }
+}
+.slot-type {
+  height: $slot-h;
+  width: $slot-h;
+  margin: 3px 0;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#slots-toggle {
+  margin-bottom: 5px;
+}
+
+.slot-wrap{
+    position: relative;
+    .slot-resizer{
+        user-select: none;
+        width: 5px;
+        cursor: col-resize;
+        background-color: white;
+        height: 100%;
+        position: absolute;
+       
+        top: 0;
+        &.start-resizer{
+            left: 0; 
+        }
+        &.end-resizer{
+            right: 0
+        }
+    }
+}
