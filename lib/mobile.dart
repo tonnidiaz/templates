@@ -1,13 +1,9 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import '/utils/constants.dart';
 
 import 'stores/app.dart';
-import 'widgets/bottombar.dart';
-import 'widgets/titlebars.dart';
 
 class MobileApp extends StatefulWidget {
   static const mChannel = MethodChannel("$package/channel");
@@ -21,25 +17,16 @@ class _MobileAppState extends State<MobileApp> {
   AppStore? appStore;
   @override
   Widget build(BuildContext context) {
-    appStore??= context.watch<AppStore>();
+    appStore ??= context.watch<AppStore>();
 
+    Map<String, Widget Function(BuildContext)> routes = {};
+    for (var page in pages) {
+      routes[page.name] = (context) => page.widget;
+    }
     return MaterialApp(
       theme: ThemeData.dark(),
-      home: Scaffold(
-          appBar: AppBar(
-            titleSpacing: 0,
-            elevation: 0,
-            toolbarHeight: 40,
-            centerTitle: true,
-            //leadingWidth: 35,
-            title:   Container(
-              color: titlebarBG,
-              child: MobileTitleBar(appStore!),
-            ),
-          ),
-          body: SingleChildScrollView(child: pages.elementAt(appStore!.tab)),
-          bottomNavigationBar: const TBottomBar()
-      ),
+      routes: routes,
+      initialRoute: pages.elementAt(appStore!.tab).name,
     );
   }
 }

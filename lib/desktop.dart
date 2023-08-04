@@ -1,71 +1,43 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
-import '/widgets/sidebar.dart';
 import '/utils/constants.dart';
-import 'package:window_manager/window_manager.dart';
 
 import 'stores/app.dart';
-import 'widgets/titlebars.dart';
-
 
 class DesktopApp extends StatefulWidget {
-  const DesktopApp({super.key});
+  static const mChannel = MethodChannel("$package/channel");
+  const DesktopApp({Key? key}) : super(key: key);
+
   @override
   State<DesktopApp> createState() => _DesktopAppState();
 }
 
-class _DesktopAppState extends State<DesktopApp> with WindowListener {
-  AppStore? _appStore;
-
-  @override
-  void initState() {
-    super.initState();
-    windowManager.addListener(this);
-  }
-
-  @override
-  void dispose() {
-    windowManager.removeListener(this);
-    super.dispose();
-  }
-
+class _DesktopAppState extends State<DesktopApp> {
+  AppStore? appStore;
   @override
   Widget build(BuildContext context) {
-    _appStore??= context.watch<AppStore>();
+    appStore ??= context.watch<AppStore>();
 
-    return  MaterialApp(
+    Map<String, Widget Function(BuildContext)> routes = {};
+    for (var page in pages) {
+      routes[page.name] = (context) => page.widget;
+    }
+    return MaterialApp(
       theme: ThemeData.dark(),
-      home: Scaffold(
-          appBar: AppBar(
-            titleSpacing: 3,
-            elevation: 0,
-            toolbarHeight: 40,
-            centerTitle: true,
-            //leadingWidth: 35,
-            title:   Container(
-              color: titlebarBG,
-              child: InkWell(
-                  enableFeedback: false,
-                  mouseCursor: SystemMouseCursors.move,
-                  onTapDown: (d) async {
-                    await windowManager.startDragging();
-                  },
-
-                  child: DesktopTitleBar(_appStore!)
-              ),
-            ),
-          ),
-          body: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const TSidebar(),
-              SingleChildScrollView(child: pages.elementAt(_appStore!.tab)),
-            ],
-          ),
-      ),
+      routes: routes,
+      builder: (context, wid) {
+        return Column(
+          children: [
+            Container(
+                height: screenSize(context).height,
+                color: Colors.cyan,
+                child: wid ?? Container()),
+          ],
+        );
+      },
+      initialRoute: pages.elementAt(appStore!.tab).name,
     );
   }
 }

@@ -15,61 +15,63 @@ class TSidebar extends StatefulWidget {
 class _TSidebarState extends State<TSidebar> {
   AppStore? _appStore;
 
-  void _onItemTapped(int index) {
-    _appStore!.set_tab(index);
+  void _onItemTapped(String route) {
+    Navigator.pushNamed(context, route);
   }
+
   @override
   Widget build(BuildContext context) {
     // Init appStore
-    _appStore??= context.watch<AppStore>();
+    _appStore ??= context.watch<AppStore>();
 
     return Container(
         color: titlebarBG,
-        width: 45,
+        width: sidebarW,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: pages
+                    .where((it) => !it.isAction)
+                    .toList()
+                    .asMap()
+                    .entries
+                    .map((e) {
+                  return IconButton(
+                      splashRadius: splashRadius,
+                      iconSize: iconSize,
+                      color:
+                          ModalRoute.of(context)?.settings.name == e.value.name
+                              ? Colors.orange
+                              : Colors.white,
+                      onPressed: () {
+                        _onItemTapped(e.value.name);
+                      },
+                      icon: Icon(e.value.icon));
+                }).toList()),
+            Column(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
+              children: pages
+                  .where((it) => it.isAction)
+                  .toList()
+                  .asMap()
+                  .entries
+                  .map((e) {
+                return IconButton(
                     splashRadius: splashRadius,
-                    iconSize: iconSize - 5,
-                    color: _appStore!.tab == 0 ? Colors.orange : Colors.white,
+                    iconSize: iconSize,
+                    color: ModalRoute.of(context)?.settings.name == e.value.name
+                        ? Colors.orange
+                        : Colors.white,
                     onPressed: () {
-                      _onItemTapped(0);
+                      _onItemTapped(e.value.name);
                     },
-                    icon: const Icon(CupertinoIcons.home)),
-                IconButton(
-                    splashRadius: splashRadius,
-                    iconSize: iconSize - 5,
-                    color: _appStore!.tab == 1 ? Colors.orange : Colors.white,
-                    onPressed: () {
-                      _onItemTapped(1);
-                    },
-                    icon: const Icon(Icons.edit)),
-                IconButton(
-                    splashRadius: splashRadius,
-                    iconSize: iconSize - 5 + 7,
-                    color: _appStore!.tab == 2 ? Colors.orange : Colors.white,
-                    onPressed: () {
-                      _onItemTapped(2);
-                    },
-                    icon: const Icon(Icons.swap_horiz)),
-
-
-              ],
+                    icon: Icon(e.value.icon));
+              }).toList(),
             ),
-            IconButton(
-                splashRadius: splashRadius,
-                iconSize: iconSize - 5,
-                color: _appStore!.tab == 3 ? Colors.orange : Colors.white,
-                onPressed: () {
-                  _onItemTapped(3);
-                },
-                icon: const Icon(CupertinoIcons.info)),
           ],
         ));
   }

@@ -1,3 +1,3 @@
-# frust
+# TunedFlutter
 
-A new Flutter project.
+A Tunedbass flutter starter template(without rust)
