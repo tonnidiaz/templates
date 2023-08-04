@@ -1,6 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:frust/utils/functions.dart';
 import 'package:frust/views/about.dart';
 import '/views/home.dart';
 
@@ -42,3 +45,20 @@ const defaultPadding = EdgeInsets.all(8);
 Size screenSize(BuildContext context) {
   return MediaQuery.of(context).size;
 }
+
+final defaultMenu = [
+  MenuItemButton(
+    onPressed: () {
+      clog("Open clicked");
+    },
+    shortcut: const SingleActivator(LogicalKeyboardKey.keyO, control: true),
+    child: const Text("Open"),
+  ),
+  MenuItemButton(
+    onPressed: () {
+      clog("Open clicked");
+    },
+    shortcut: const SingleActivator(LogicalKeyboardKey.keyS, control: true),
+    child: const Text("Save"),
+  ),
+];

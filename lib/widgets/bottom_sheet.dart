@@ -22,7 +22,7 @@ class _TBottomSheetState extends State<TBottomSheet> {
       padding: defaultPadding,
       height: bottomSheetH,
       decoration: const BoxDecoration(
-          color: titlebarBG,
+          color: appBG,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(15),
             topRight: Radius.circular(15),

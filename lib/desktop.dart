@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:menu_bar/menu_bar.dart';
 import 'package:provider/provider.dart';
 import '/utils/constants.dart';
 

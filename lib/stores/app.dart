@@ -1,4 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:frust/utils/constants.dart';
 
 class AppStore extends ChangeNotifier {
   String _company = "Tunedbass";
@@ -49,6 +51,13 @@ class AppStore extends ChangeNotifier {
   List<Widget> get navItems => _navItems;
   void set_navItems(List<Widget> val) {
     _navItems = val;
+    notifyListeners();
+  }
+
+  List<MenuItemButton> _mainMenu = defaultMenu;
+  List<MenuItemButton> get mainMenu => _mainMenu;
+  void set_mainMenu(List<MenuItemButton> val) {
+    _mainMenu = val;
     notifyListeners();
   }
 }

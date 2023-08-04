@@ -24,7 +24,7 @@ AppBar MobileTitleBar(AppStore appStore, {String? title = "Tanverter"}) {
               backgroundColor: Colors.transparent,
               context: context,
               builder: (BuildContext context) {
-                return TBottomSheet();
+                return const TBottomSheet();
               },
             );
           },
@@ -59,7 +59,7 @@ AppBar DesktopTitleBar(AppStore appStore) {
     toolbarHeight: 35,
     centerTitle: true,
     leadingWidth: 0,
-    leading: Text(""),
+    leading: const Text(""),
     title: Container(
       width: double.infinity,
       color: titlebarBG,
@@ -78,12 +78,19 @@ AppBar DesktopTitleBar(AppStore appStore) {
                 children: [
                   SubmenuButton(
                       menuChildren: [
-                        MenuItemButton(child: Text("Import audio file")),
-                        MenuItemButton(child: Text("Export audio file")),
-                        MenuItemButton(child: Text("Exit")),
+                        ...appStore.mainMenu,
+                        MenuItemButton(
+                          shortcut:
+                              const CharacterActivator("E", control: true),
+                          onPressed: () async {
+                            clog("Closing app");
+                            await windowManager.close();
+                          },
+                          child: const Text("Exit"),
+                        ),
                       ],
                       child: Builder(builder: (context) {
-                        return Icon(Icons.sort);
+                        return const Icon(Icons.sort);
                       }))
                 ],
               ),

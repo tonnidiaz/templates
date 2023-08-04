@@ -70,9 +70,6 @@ class _PageWrapperState extends State<PageWrapper> {
       child: Scaffold(
           appBar:
               isMobile ? MobileTitleBar(_appStore) : DesktopTitleBar(_appStore),
-          drawer: Drawer(
-            child: Column(children: [NavItem(text: "Item 1")]),
-          ),
           body: RefreshIndicator(
             onRefresh: () async {
               clog("Refreshing...");
@@ -82,10 +79,14 @@ class _PageWrapperState extends State<PageWrapper> {
             },
             child: Row(
               children: [
-                isMobile ? Container() : const TSidebar(),
+                isMobile
+                    ? const SizedBox(
+                        width: 0,
+                      )
+                    : const TSidebar(),
                 SizedBox(
                   width: isMobile
-                      ? double.infinity
+                      ? screenSize(context).width
                       : screenSize(context).width - sidebarW,
                   child: SingleChildScrollView(
                       physics: widget.onRefresh != null
