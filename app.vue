@@ -1,13 +1,16 @@
 <template>
-  <div>
-    <NuxtLayout>
-        <NuxtPage/>
-    </NuxtLayout>
-  </div>
+    <Html lang="en" class="dark">
+         <NuxtLayout>
+              <NuxtPage></NuxtPage>
+         </NuxtLayout>
+        
+    </Html>
 </template>
 <script setup lang="ts">
-import "@/src/assets/bootstrap/css/bootstrap.min.css";
-import "@/src/styles/styles.scss";
-import "@/src/styles/dialog.scss";
-import "@/src/styles/toast.scss";
+import "~/src/styles/styles.scss";
+import { initFlowbite } from 'flowbite'
+
+onMounted(()=>{
+    initFlowbite();
+})
 </script>

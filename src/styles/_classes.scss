@@ -4,6 +4,30 @@
     }
 }
 @for $i from 1 through 300 {
+    .h-#{$i}px {
+        height: #{$i}px !important;
+    }
+    .w-#{$i}px {
+        width: #{$i}px !important;
+    }
+    .max-h#{$i} {
+        max-height: #{$i}px !important;
+    }
+    .max-w#{$i} {
+        max-width: #{$i}px !important;
+    }
+    .min-h#{$i} {
+        min-height: #{$i}px !important;
+    }
+    .min-w#{$i} {
+        min-width: #{$i}px !important;
+    }
+    .h-#{$i}p {
+        height: #{$i}#{"%"} !important;
+    }
+    .w-#{$i}p {
+        width: #{$i}#{"%"} !important;
+    }
     .my-#{$i} {
       margin-top: #{$i}px !important;
       margin-bottom: #{$i}px !important;
@@ -49,4 +73,52 @@
     .w-#{$i}vw{
       width: #{$i}vw !important;
     }
+
+    @media screen and (max-width: #{$i}px) {
+        .w-#{$i}px {
+          width: calc(100vw) !important;
+        }
+      }
   }
+
+  ._flex{
+    display: flex;
+    flex-direction: column;
+  }
+  ._jc-c{
+    justify-content: center;
+  }
+  ._jc-sb{
+    justify-content: space-between;
+  }
+
+  ._ai-c{
+    align-items: center;
+  }
+  ._ai-sb{
+    align-items: space-between;
+  }
+
+  .bg-body, .hover-body:hover{
+    background-color: $color-card !important; 
+  }
+  .bg-card, .hover-card:hover{
+    background-color: $color-card-2 !important;
+  }
+  .bg-card-0, .hover-card-0:hover{
+    background-color: $color-card-0 !important;
+  }
+
+
+  @for $i from 0 through 60 {
+    .fs-#{$i} {
+        font-size: #{$i}px !important;
+    }
+    .gap-#{$i} {
+        gap: #{$i}px;
+    }
+}
+
+.card-border{
+    border: $card-border;
+}

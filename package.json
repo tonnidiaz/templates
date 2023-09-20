@@ -10,16 +10,21 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "0.8.4",
     "@nuxt/image": "^0.7.1",
+    "@nuxtjs/color-mode": "^3.3.0",
+    "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/jquery": "^3.5.19",
     "nuxt": "^3.7.3",
-    "nuxt-simple-sitemap": "^3.3.3",
-    "sass": "^1.67.0"
+    "nuxt-simple-sitemap": "^3.3.4",
+    "postcss": "^8.4.30",
+    "sass": "^1.67.0",
+    "tailwindcss": "^3.3.3"
   },
   "dependencies": {
     "@material-design-icons/font": "^0.14.12",
     "@pinia/nuxt": "^0.4.11",
+    "flowbite": "^1.8.1",
     "jquery": "^3.7.1",
     "pinia": "^2.1.6"
   }

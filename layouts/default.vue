@@ -1,37 +1,17 @@
 <template>
     <div>
-        <div>
-            <!--------------------------------------------- UTILS   ---------------------------------------------------------->
-
-            <div id="global-overlay" class="sch blur"></div>
-            <!--------------------------------------------- END UTILS   ---------------------------------------------------------->
-            <div id="main-app">
-                <Header />
-                <div class="dflex _row _main">
-                    <Sidenav />
-                    <main>
-                        <div class="body">
-                            <div class="app">
-                                <slot />
-                            </div>
-                        </div>
-
-                        <Footer />
-                    </main>
-                </div>
-            </div>
-
-            <div id="social_bar"></div>
+        <Header/>
+        <div class="tu-app">
+              <Sidebar />
+            <main><slot /></main>
+            <Drawer class="right"/>
         </div>
+        
     </div>
 </template>
 
 <script lang="ts" setup>
 import Header from "@/components/Header.vue";
-import Sidenav from "@/components/Sidenav.vue";
-
-const route = useRoute();
-
 </script>
 
 <style>
