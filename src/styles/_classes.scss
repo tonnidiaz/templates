@@ -3,7 +3,7 @@
         border-radius: #{$i}px !important;
     }
 }
-@for $i from 1 through 300 {
+@for $i from 1 through 700 {
     .h-#{$i}px {
         height: #{$i}px !important;
     }
@@ -120,5 +120,5 @@
 }
 
 .card-border{
-    border: $card-border;
+    border: $card-border !important;
 }

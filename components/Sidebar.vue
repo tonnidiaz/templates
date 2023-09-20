@@ -1,7 +1,7 @@
 <template>
     <aside  class="sidebar" aria-label="Sidebar">
         <div class="content">
-            <ul>
+            <ul class="gap-10">
                 <li class="bar-item group">
                     <NuxtLink to="/">
                         <span>
@@ -16,8 +16,13 @@
                         </span>
                     </NuxtLink>
                 </li>
+                <li class="bar-item ">
+                    <NuxtLink to="/forms">
+                        <i class="material-icons">article</i>
+                    </NuxtLink>
+                </li>
             </ul>
-            <ul>
+            <ul class="hide-sm">
                 <li class="bar-item group">
                     <NuxtLink to="/about">
                         <span>
