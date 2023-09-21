@@ -1,16 +1,19 @@
 <template>
-    <Html lang="en" class="dark">
-         <NuxtLayout>
-              <NuxtPage></NuxtPage>
-         </NuxtLayout>
-        
-    </Html>
-</template>
-<script setup lang="ts">
-import "~/src/styles/styles.scss";
-import { initFlowbite } from 'flowbite'
+    <Html lang="en" class="dark" data-theme="tb">
+        <TMeta/>
+        <NuxtLayout>
 
-onMounted(()=>{
-    initFlowbite();
-})
+            <NuxtPage></NuxtPage>
+        </NuxtLayout> 
+    </Html>
+</template> 
+<script setup lang="ts">
+import "~/src/styles/daisyui.scss";
+
+useHead({
+    link: [{
+        rel: 'stylesheet',
+        href: '/assets/fa/fa.css'
+    }]
+});
 </script>

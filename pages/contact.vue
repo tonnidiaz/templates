@@ -1,37 +1,37 @@
 <template>
     <div class="p-2 body">
       <TMeta :title="`Contact us - ${SITE}`" :url="ROOT + '/contact'" />
-      <fieldset class="p-3 br-10 form bg-blue-2 formset border-card">
-        <legend class="">Contact us</legend>
+      <fieldset class="p-3 my-10  w-80 w-sm-full m-auto card shadow-xl bg-base-100 border-card border-1">
+        <legend class="fs-20 font-bold"><h1> Contact us</h1></legend>
         <form action="#" @submit="contactUs">
-          <div class="form-group">
-            <label for="fullname">Full name:</label>
+          <div class="form-control">
+            <label class="label" for="fullname">Full name:</label>
             <input
               required
               name="name"
               id="fullname"
               type="text"
-              class="form-control"
+              class="input input-bordered w-full"
               placeholder="Enter your full name..."
             />
           </div>
-          <div class="form-group">
-            <label for="email">Email address:</label>
+          <div class="form-control">
+            <label class="label" for="email">Email address:</label>
             <input
               reuired
               name="email"
               id="email"
               type="email"
               placeholder="Enter your Email address..."
-              class="form-control"
+              class="input input-bordered w-full"
             />
           </div>
-          <div class="form-group">
-            <label for="msg">Message:</label>
-            <textarea placeholder="What is your query?..." required name="message" id="msg" class="form-control" />
+          <div class="form-control">
+            <label class="label" for="msg">Message:</label>
+            <textarea placeholder="What is your query?" required name="message" id="msg" class="input input-bordered w-full" />
           </div>
-          <div class="form-group mt-4 mb-3">
-            <button class="btn bg-dark-0 m-auto w-100p border-body" type="submit">
+          <div class="form-control mt-4 mb-3">
+            <button class="btn bg-primary hover:bg-accent btn-md  w-100p border-body text-black" type="submit">
               Submit
             </button>
           </div>

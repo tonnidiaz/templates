@@ -3,35 +3,32 @@
         <div class="p-6">
             <fieldset class="fieldset card-border w-500px">
                 <legend><h1>Form page</h1></legend>
+                <p>{{ name }}</p>
                 <form action="">
-                    <div class="">
-                        <div class="p-1">
-                            <div class="relative">
-                                <input
-                                    type="text"
-                                    id="floating_outlined"
-                                    class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
-                                    placeholder="Enter name..."
-                                />
-                                <label
-                                    for="floating_outlined"
-                                    class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
-                                    >Floating outlined</label
-                                >
-                            </div>
-                                <FormField
-                                
-                                    id="username"
-                                    label="Username:"
-                                class="my-7"
-                                :props="{
-                                }"
-                                >
-                                </FormField>
-                        </div>
-                    </div>
+                    <Input
+                        v-model="name"
+                        placeholder="enter your first name"
+                        label="First name"> 
+                    <template #prefix>
+                        <i class="material-icons">search</i>
+                    </template>
+                    <template #suffix>
+                        <Button>
+                                       <i class="material-icons">tune</i>
+                        </Button>
+             
+                    </template>
+                    </Input>
+
+                   
+<button class="btn  btn-outline btn-success btn-sm">Submit</button>
                 </form>
             </fieldset>
         </div>
     </div>
 </template>
+
+<script setup lang="ts">
+import { Input, Button } from "flowbite-vue";
+const name = ref("");
+</script>

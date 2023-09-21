@@ -3,7 +3,7 @@
 **A Nuxt3 template with:**
 - pinia
 - sitemaps
-- Tailwind & Flowbite
-- Vuetify
+- Tailwind & daisyui
 - Google analytics
 - Material icons
+- Font Awesome

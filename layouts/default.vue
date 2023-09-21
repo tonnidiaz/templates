@@ -1,17 +1,14 @@
 <template>
     <div>
-        <Header/>
+        <Navbar />
         <div class="tu-app">
-              <Sidebar />
+            <Sidebar />
             <main><slot /></main>
-            <Drawer class="right"/>
         </div>
-        
     </div>
 </template>
 
 <script lang="ts" setup>
-import Header from "@/components/Header.vue";
 </script>
 
 <style>

@@ -1,5 +1,6 @@
 $sidenav-w: 60px;
-$color-orange: #ff6a06;
+$color-orange-0: rgb(255, 106, 6);
+$color-orange: #ffa500;
 $color-yellow: yellow;
 $color-gray-1: #262729;
 $color-white-2: rgb(184, 184, 184);
@@ -25,4 +26,7 @@ $color-body2: #161616;
 $color-header: $color-bg;
 $dlg-border-color: #434343;
 $dlg-bg-color: #333333;
-$color-overlay: rgba(0, 0, 0, 0.7)
+$color-overlay: rgba(0, 0, 0, 0.7);
+
+$on-bg-dark: #29333d;
+$on-bg-tb: #292828;

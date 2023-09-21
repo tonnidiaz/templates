@@ -1,37 +1,24 @@
 <template>
-    <aside  class="sidebar" aria-label="Sidebar">
-        <div class="content">
-            <ul class="gap-10">
-                <li class="bar-item group">
-                    <NuxtLink to="/">
-                        <span>
-                            <i class="material-icons">home</i>
-                        </span>
-                    </NuxtLink>
-                </li>
-                <li class="bar-item group">
-                    <NuxtLink to="/contact">
-                        <span>
-                            <i class="material-icons">email</i>
-                        </span>
-                    </NuxtLink>
-                </li>
-                <li class="bar-item ">
-                    <NuxtLink to="/forms">
-                        <i class="material-icons">article</i>
-                    </NuxtLink>
-                </li>
-            </ul>
-            <ul class="hide-sm">
-                <li class="bar-item group">
-                    <NuxtLink to="/about">
-                        <span>
-                            <i class="material-icons">info</i>
-                        </span>
-                    </NuxtLink>
-                </li>
-            </ul>
-        </div>
+    <aside >
+        <ul class="menu gap-5  sidebar">
+   
+    
+   <li class="tooltip tooltip-right" data-tip="Home">
+       <NuxtLink to="/">
+           <i class="fa fa-home fs-20"></i>
+       </NuxtLink>
+   </li>
+   <li class="tooltip tooltip-right" data-tip="Contact us">
+       <NuxtLink to="/contact">
+       <i class="fa fa-envelope fs-20"></i>
+       </NuxtLink>
+   </li>
+   <li class="tooltip tooltip-right" data-tip="About us">
+       <NuxtLink to="/about">
+        <i class="fa fa-info-circle fs-20"></i>
+       </NuxtLink>
+   </li>
+</ul>
     </aside>
 </template>
 

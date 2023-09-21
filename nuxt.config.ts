@@ -3,14 +3,19 @@ export default defineNuxtConfig({
     modules: [
         "@pinia/nuxt",
         "nuxt-simple-sitemap",
-        "@nuxtjs/tailwindcss",
-        "@nuxtjs/color-mode",
+ 
     ],
-    colorMode: {
-        classSuffix: "",
-        preference: 'dark',
-        fallback: 'dark'
-    },
+    css: ['~/assets/css/tailwind.css'],
+    
+    postcss: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+   
+
+
 
     devtools: { enabled: false },
     site: {
