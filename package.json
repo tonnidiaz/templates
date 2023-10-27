@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rimraf dist/",
     "build": "npm run clean && npx tsc -p tsconfig.json  && npm run cp",
-    "start": "node dist/index.js",
+    "start": "ts-node -r tsconfig-paths/register dist/index.js",
     "dev": "tsx watch  index.ts",
     "cp": "copyfiles -u 1 src/views/* src/public/**/* dist/src"
   },
