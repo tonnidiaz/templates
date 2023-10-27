@@ -4,26 +4,34 @@ import pino from 'pino';
 import AutoLoad, {AutoloadPluginOptions} from '@fastify/autoload';
 import fastifyView from '@fastify/view';
 import fastifyStatic from '@fastify/static';
+import { io } from '@/utils/io';
 
-const envToLogger = {
-    development: {
-      transport: {
-        target: 'pino-pretty',
-        options: {
-          translateTime: 'HH:MM:ss Z',
-          ignore: 'pid,hostname',
-        },
-      },
-    },
-    production: true,
-    test: false,
-  }
-const start = async ()=>{
+const start = async ()=>{ 
 
     const server = fastify({
-        logger: envToLogger.development ?? true
+        logger: {
+            transport: {target: "pino-pretty", options:{
+                translateTime: 'HH:MM:ss Z',
+                ignore: "pid,hostname,reqId,responseTime"
+            }},
+            serializers: {
+                req (r){
+                    return {
+                        method: r.method,
+                        url: r.url
+                    }
+                },
+                res(r){
+                    return {
+                        status: r.statusCode
+                    }
+                }
+                
+            }
+        }
     })
     
+    io.attach(server.server)
      //Public dir
      server.register(fastifyStatic, {
             root: path.join(__dirname, 'src/public'),
