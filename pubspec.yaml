@@ -13,12 +13,12 @@ dependencies:
   get: ^4.6.5
   flutter_hooks: ^0.20.3
   google_fonts: ^6.1.0
-  #tu:
-  #  path: /home/tonni/Documents/GitHub/flutter/tu
   tu:
-    git:
-      url: https://github.com/tonnidiaz/flutter_tu.git
-      ref: main
+    path: /home/tonni/Documents/GitHub/flutter/tu
+  #tu:
+  #  git:
+  #    url: https://github.com/tonnidiaz/flutter_tu.git
+  #    ref: main
 dev_dependencies:
   flutter_test:
     sdk: flutter

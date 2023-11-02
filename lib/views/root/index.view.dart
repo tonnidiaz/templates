@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:tu/views.dart';
 import 'package:tuned/views/about.dart';
-import 'package:tuned/views/root/widgets.view.dart';
 import 'package:tuned/widgets/sidebar.dart';
 import 'package:tu/tu.dart';
 

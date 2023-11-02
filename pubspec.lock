@@ -376,11 +376,9 @@ packages:
   tu:
     dependency: "direct main"
     description:
-      path: "."
-      ref: main
-      resolved-ref: "149242c5d7c2fe3f6b501482745070b828beecd4"
-      url: "https://github.com/tonnidiaz/flutter_tu.git"
-    source: git
+      path: "/home/tonni/Documents/GitHub/flutter/tu"
+      relative: false
+    source: path
     version: "0.0.1"
   typed_data:
     dependency: transitive
