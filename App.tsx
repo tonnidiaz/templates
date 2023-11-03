@@ -25,27 +25,24 @@ import {
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { TuTheme } from "./src/utils/theme";
-import { HomeScreen } from "./src/screens/HomeScreen";
 import { PaperProvider } from "react-native-paper";
 import { TuAppbar } from "./src/components/Appbar";
+import { RootScreen } from "./src/screens/root/RootScreen";
 
 const Stack = createNativeStackNavigator();
 
 
 function App(): JSX.Element {
-  const isDarkMode = true;//useColorScheme() === 'dark';
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
 
   return (
        <PaperProvider theme={TuTheme}>
                <NavigationContainer theme={TuTheme as any}>
             <Stack.Navigator  screenOptions={{
-          header: (props) => <TuAppbar {...props} />,
+                headerShown: false,
+          /* header: (props) => <TuAppbar {...props} />, */
         }}>
-                <Stack.Screen name="Home" component={HomeScreen} />
+                <Stack.Screen name="Root" component={RootScreen} />
             </Stack.Navigator>
         </NavigationContainer>
         </PaperProvider>
