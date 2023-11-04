@@ -8,7 +8,6 @@ import 'utils/constants.dart';
 import 'package:tu/tu.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
   setupWindowManager();
 
   runApp(const MainApp());
@@ -16,10 +15,12 @@ void main() {
 
 class MainApp extends StatelessWidget {
   static AppCtrl appCtrl = Get.put(AppCtrl());
+  static BarCtrl barCtrl = Get.put(BarCtrl());
   const MainApp({super.key});
 
   void _init() {
     Get.put(AppCtrl());
+    Get.put(BarCtrl());
   }
 
   @override

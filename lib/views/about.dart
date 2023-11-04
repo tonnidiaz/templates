@@ -16,19 +16,20 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: tuAppbar(title: const Text("About")),
         body: Container(
-      padding: const EdgeInsets.all(8),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text("About us"),
-          Obx(() => TuButton(
-              text: "Is enabled: ${_appCtrl.backEnabled}",
-              onPressed: () {
-                _appCtrl.setBackEnabled(!_appCtrl.backEnabled.value);
-              }))
-        ],
-      ),
-    ));
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Text("About us"),
+              Obx(() => TuButton(
+                  text: "Is enabled: ${_appCtrl.backEnabled}",
+                  onPressed: () {
+                    _appCtrl.setBackEnabled(!_appCtrl.backEnabled.value);
+                  }))
+            ],
+          ),
+        ));
   }
 }
