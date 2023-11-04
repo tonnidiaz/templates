@@ -8,6 +8,7 @@ import 'utils/constants.dart';
 import 'package:tu/tu.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   setupWindowManager();
 
   runApp(const MainApp());
