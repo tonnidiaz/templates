@@ -68,11 +68,13 @@ export const WidgetsScreen = () => {
                         padding: 10,
                         margin: "auto",
                     }}
+                    
                 >
 
                     <TextInput
+                        keyboardAppearance="dark"
                     autoFocus={false}
-                        right={<TextInput.Icon size={20} icon={"send"} />}
+                        right={<TextInput.Icon size={20} icon={"home"} />}
                         style={{
                             width: screenSize.width - 20,
                             backgroundColor: tuColors.bg1,
@@ -80,36 +82,7 @@ export const WidgetsScreen = () => {
                         placeholder="Enter username..."
                         label={"Username:"}
                     ></TextInput>
-                    <TextInput
-                    autoFocus={false}
-                        right={<TextInput.Icon size={20} icon={"send"} />}
-                        style={{
-                            width: screenSize.width - 20,
-                            backgroundColor: tuColors.bg1,
-                        }}
-                        placeholder="Enter username..."
-                        label={"Username:"}
-                    ></TextInput>
-                    <TextInput
-                    autoFocus={false}
-                        right={<TextInput.Icon size={20} icon={"send"} />}
-                        style={{
-                            width: screenSize.width - 20,
-                            backgroundColor: tuColors.bg1,
-                        }}
-                        placeholder="Enter username..."
-                        label={"Username:"}
-                    ></TextInput>
-                    <TextInput
-                    autoFocus={false}
-                        right={<TextInput.Icon size={20} icon={"send"} />}
-                        style={{
-                            width: screenSize.width - 20,
-                            backgroundColor: tuColors.bg1,
-                        }}
-                        placeholder="Enter username..."
-                        label={"Username:"}
-                    ></TextInput>
+             
 
                     <TuChip>
                         <Text>Pending</Text>
@@ -136,36 +109,33 @@ export const WidgetsScreen = () => {
                             
                         </Snackbar>
                     </Portal>
+                   
+                    <TuButton onPress={()=>{
+                        console.log('shwng...');
+                        setDlgVisible(true)}}>
+                        <Text>Show dialog</Text>
+                    </TuButton>
+                    
                     <TuButton onPress={() => setSnackVisible(true)}>
                         <Text>Show snack</Text>
                     </TuButton>
-                    <TuButton onPress={() => setDlgVisible(true)}>
-                        <Text>Show dialog</Text>
-                    </TuButton>
-                    <TuButton onPress={() => setSnackVisible(true)}>
-                        <Text>Show snack</Text>
-                    </TuButton>
-                    <TuButton onPress={() => setDlgVisible(true)}>
-                        <Text>Show dialog</Text>
-                    </TuButton>
-                    <TuButton onPress={() => setSnackVisible(true)}>
-                        <Text>Show snack</Text>
-                    </TuButton>
-                    <TuButton onPress={() => setDlgVisible(true)}>
-                        <Text>Show dialog</Text>
-                    </TuButton>
+        
 
                     <TuDialog
                         title="Dialog"
                         visible={dlgVisible}
-                        onDismiss={() => setDlgVisible(false)}
+                        
+                        onDismiss={() =>{
+                            setDlgVisible(false)}}
                     >
                         <Dialog.Content>
                             <Text>My dialog</Text>
                         </Dialog.Content>
                         <Dialog.Actions>
                             <Button onPress={()=> setDlgVisible(false)}>Cancel</Button>
-                            <Button onPress={()=> setDlgVisible(false)}>Ok</Button>
+                            <Button onPress={()=> {
+                                console.log("DISMIZ");
+                                setDlgVisible(false)}}>Ok</Button>
                         </Dialog.Actions>
                         
                     </TuDialog>

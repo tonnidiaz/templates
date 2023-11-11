@@ -9,7 +9,6 @@ import FeatherIcon from 'react-native-vector-icons/Feather';
 import { tuColors } from "../../utils/styles";
 import { IScrean } from "@/utils/interfaces";
 import { AboutScreen } from "../AboutScreen";
-import { TuTheme } from "@/utils/theme";
 
 const Tab = createBottomTabNavigator()
 const screens: IScrean [] = [
@@ -26,13 +25,12 @@ const screens: IScrean [] = [
 export const RootScreen = ()=>{
 
  
-    return <Tab.Navigator  screenOptions={{headerShown: false, tabBarHideOnKeyboard: false,}} 
+    return <Tab.Navigator screenOptions={{headerShown: false}} 
     tabBar={({ navigation, state, descriptors, insets }) => (
-        <BottomNavigation.Bar theme={TuTheme}
+        <BottomNavigation.Bar
         style={{backgroundColor: tuColors.bg1,}} 
           navigationState={state}
          safeAreaInsets={insets}
-         keyboardHidesNavigationBar={true}
           onTabPress={({ route, preventDefault }) => {
             const event = navigation.emit({
               type: 'tabPress',

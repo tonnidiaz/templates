@@ -7,7 +7,9 @@ import { TuAppbar } from "@/components/Appbar";
 export const HomeScreen = () => {
     return (
         <>
-            <TuAppbar title="Home"></TuAppbar>
+            <TuAppbar title="Home">
+                
+            </TuAppbar>
             <View style={{ ...tuStyles.wrapper }}>
                 <Text>HOME</Text>
                 <TuButton onPress={() => console.log("PRESS")}>
