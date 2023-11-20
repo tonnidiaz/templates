@@ -3,14 +3,14 @@ import 'package:tuned/controllers/app_ctrl.dart';
 import 'package:get/get.dart';
 import 'package:tu/tu.dart';
 
-class AboutPage extends StatefulWidget {
-  const AboutPage({Key? key}) : super(key: key);
+class AboutView extends StatefulWidget {
+  const AboutView({Key? key}) : super(key: key);
 
   @override
-  State<AboutPage> createState() => _AboutPageState();
+  State<AboutView> createState() => _AboutViewState();
 }
 
-class _AboutPageState extends State<AboutPage> {
+class _AboutViewState extends State<AboutView> {
   final AppCtrl _appCtrl = Get.find();
 
   @override

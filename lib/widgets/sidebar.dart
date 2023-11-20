@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:tuned/views/root/index.view.dart';
-import 'package:get/get.dart';
+import 'package:tuned/views/root/root_view.dart';
 import 'package:tu/tu.dart';
 
-class TuSidebar extends HookWidget {
+class TuSidebar extends StatelessWidget {
   const TuSidebar({Key? key}) : super(key: key);
 
   @override
@@ -13,7 +11,7 @@ class TuSidebar extends HookWidget {
 
     return Obx(
       () => Container(
-          color: TuColors.bg1(),
+          color: colors.bg1,
           width: appBarH,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -34,7 +32,7 @@ class TuSidebar extends HookWidget {
                           splashRadius: splashRadius,
                           iconSize: iconSize,
                           color: rootCtrl.currentTab == e.key
-                              ? TuColors.primary
+                              ? colors.primary
                               : null,
                           onPressed: () {
                             rootCtrl.currentTab = e.key;
@@ -57,7 +55,7 @@ class TuSidebar extends HookWidget {
                     child: IconButton(
                         splashRadius: splashRadius,
                         color: rootCtrl.currentTab == index
-                            ? TuColors.primary
+                            ? colors.primary
                             : null,
                         onPressed: () {
                           rootCtrl.currentTab = index;

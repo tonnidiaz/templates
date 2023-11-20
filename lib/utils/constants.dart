@@ -9,6 +9,6 @@ final List<TuPage> pages = [
     const HomePage(),
     icon: CupertinoIcons.home,
   ),
-  TuPage("/about", const AboutPage(),
+  TuPage("/about", const AboutView(),
       icon: CupertinoIcons.info_circle, isAction: true),
 ];

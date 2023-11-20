@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tuned/controllers/app_ctrl.dart';
-import 'package:tuned/utils/classes/index.class.dart';
-import 'package:tuned/views/root/index.view.dart';
 
-import 'package:get/get.dart';
-import 'utils/constants.dart';
 import 'package:tu/tu.dart';
+
+import 'views/root/root_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  setupWindowManager();
+  //setupWindowManager();
 
   runApp(const MainApp());
 }
@@ -27,18 +25,13 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _init();
-    Map<String, Widget Function(BuildContext)> routes = {};
-    for (var page in pages.where((e) => e.to != null)) {
-      routes[page.to!] = (context) => page.widget;
-    }
+
     return Obx(
       () => GetMaterialApp(
-        theme: tuTheme(dark: Tu.appCtrl.darkMode.value),
+        theme: TuTheme(colors: TuColors(), dark: Tu.appCtrl.darkMode).theme(),
         debugShowCheckedModeBanner: false,
-        scrollBehavior: isMobile ? MyCustomScrollBehavior() : null,
         home: const Root(),
       ),
     );
-    //isMobile ? const MobileApp() : const DesktopApp();
   }
 }
