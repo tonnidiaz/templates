@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tuned/main.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -6,7 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text("Home")),
+        appBar: AppBar(title: Text(MainApp.appCtrl.title)),
         body: const SizedBox(
           width: double.infinity,
           child: Column(
