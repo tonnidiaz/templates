@@ -1,22 +1,13 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:tu/tu.dart';
 
 class AppCtrl extends GetxController {
-  var count = 0.obs;
-  void increment() {
-    count.value++;
-  }
+  final _title = Rx<String>("Tunedbass");
+  String get title => _title.value;
+  set title(String val) => _title.value = val;
 
-  var title = "Tunedbass app".obs;
-  void setTitle(String val) {
-    title.value = val;
-  }
-
-  var navItems = <Widget>[].obs;
-  void setNavItems(List<Widget> val) {
-    navItems.value = val;
-  }
+  final _appId = Rx<String>("com.tb.tb");
+  String get appId => _appId.value;
+  set appId(String val) => _appId.value = val;
 
   var isLoading = false.obs;
   void setIsLoading(bool val) {
@@ -27,5 +18,20 @@ class AppCtrl extends GetxController {
   var backEnabled = true.obs;
   void setBackEnabled(bool val) {
     backEnabled.value = val;
+  }
+
+  final _version = Rx<String>("");
+  String get version => _version.value;
+  set version(String val) => _version.value = val;
+
+  _getAppVersion() async {
+    version = await getAppVersion();
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    _getAppVersion();
+  
   }
 }

@@ -1,10 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:tuned/controllers/app_ctrl.dart';
-import 'package:get/get.dart';
 import 'package:tu/tu.dart';
-
-import 'package:window_manager/window_manager.dart';
 
 AppBar mobileAppbar({String? title = "Tanverter"}) {
   final AppCtrl appCtrl = Get.find();
@@ -12,8 +9,7 @@ AppBar mobileAppbar({String? title = "Tanverter"}) {
     leading: Builder(builder: (context) {
       return IconButton(onPressed: () {}, icon: const Icon(Icons.sort));
     }),
-    title: Obx(
-        () => Text(appCtrl.title.value, style: const TextStyle(fontSize: 16))),
+    title: Obx(() => Text(appCtrl.title, style: const TextStyle(fontSize: 16))),
     actions: [
       SizedBox(
         width: 35,
@@ -48,7 +44,7 @@ AppBar desktopAppbar() {
         //enableFeedback: false,
         // mouseCursor: SystemMouseCursors.move,
         onTapDown: (d) async {
-          await windowManager.startDragging();
+          //await windowManager.startDragging();
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,7 +60,7 @@ AppBar desktopAppbar() {
                                   const CharacterActivator("E", control: true),
                               onPressed: () async {
                                 clog("Closing app");
-                                await windowManager.close();
+                                // await windowManager.close();
                               },
                               child: const Text("Exit"),
                             ),
@@ -76,7 +72,7 @@ AppBar desktopAppbar() {
               ),
             ),
             Text(
-              appCtrl.title.value,
+              appCtrl.title,
               style: const TextStyle(fontSize: 16),
             ),
             Row(
@@ -84,19 +80,19 @@ AppBar desktopAppbar() {
               children: [
                 ActionBtn(CupertinoIcons.minus_circle_fill,
                     color: Colors.yellow, onClick: () async {
-                  await windowManager.minimize();
+                  // await windowManager.minimize();
                 }),
                 ActionBtn(CupertinoIcons.add_circled_solid, color: Colors.green,
                     onClick: () async {
-                  if (await windowManager.isMaximized()) {
+                  /*   if (await windowManager.isMaximized()) {
                     await windowManager.unmaximize();
                   } else {
                     await windowManager.maximize();
-                  }
+                  } */
                 }),
                 ActionBtn(CupertinoIcons.multiply_circle_fill,
                     color: Colors.red, onClick: () async {
-                  await windowManager.close();
+                  //    await windowManager.close();
                 }),
               ],
             )

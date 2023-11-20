@@ -59,6 +59,7 @@ class Root extends StatelessWidget {
                 currentIndex: ctrl.currentTab,
                 items: ctrl.tabs
                     .map((e) => BottomNavigationBarItem(
+                      backgroundColor: colors.bg1,
                         icon: Icon(e.icon), label: e.label))
                     .toList(),
               ),

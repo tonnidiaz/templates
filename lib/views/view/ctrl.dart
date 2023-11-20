@@ -1,3 +1,3 @@
-import 'package:get/get.dart';
+import 'package:tu/tu.dart';
 
 class Ctrl extends GetxController {}
