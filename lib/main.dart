@@ -28,7 +28,9 @@ class MainApp extends StatelessWidget {
 
     return Obx(
       () => GetMaterialApp(
-        theme: TuTheme(colors: TuColors(), dark: Tu.appCtrl.darkMode).theme(),
+        theme: TuTheme(
+                context: context, colors: TuColors(), dark: Tu.appCtrl.darkMode)
+            .theme(),
         debugShowCheckedModeBanner: false,
         home: const Root(),
       ),
