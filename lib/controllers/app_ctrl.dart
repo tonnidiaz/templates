@@ -28,10 +28,16 @@ class AppCtrl extends GetxController {
     version = await getAppVersion();
   }
 
+  final _currentRoute = Rx("/");
+  String get currentRoute => _currentRoute.value;
+  set currentRoute(String val) => _currentRoute.value = val;
+
+  final _isVisible = Rx<bool>(true);
+  bool get isVisible => _isVisible.value;
+  set isVisible(bool val) => _isVisible.value = val;
   @override
   void onInit() {
     super.onInit();
     _getAppVersion();
-  
   }
 }

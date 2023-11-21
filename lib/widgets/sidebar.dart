@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:tuned/views/root/root_view.dart';
 import 'package:tu/tu.dart';
-
+/* 
 class TuSidebar extends StatelessWidget {
   const TuSidebar({Key? key}) : super(key: key);
 
@@ -37,7 +37,7 @@ class TuSidebar extends StatelessWidget {
                           onPressed: () {
                             rootCtrl.currentTab = e.key;
                           },
-                          icon: Icon(e.value.icon)),
+                          icon: e.value.icon),
                     );
                   }).toList()),
               Column(
@@ -60,7 +60,7 @@ class TuSidebar extends StatelessWidget {
                         onPressed: () {
                           rootCtrl.currentTab = index;
                         },
-                        icon: Icon(e.value.icon)),
+                        icon: e.value.icon),
                   );
                 }).toList(),
               ),
@@ -69,3 +69,4 @@ class TuSidebar extends StatelessWidget {
     );
   }
 }
+ */ */

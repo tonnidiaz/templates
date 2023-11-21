@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:tu/tu.dart';
 import 'package:tu/utils/functions2.dart';
 import 'package:tuned/main.dart';
+import 'package:tuned/views/about.dart';
 
 class SettingsView extends StatelessWidget {
   const SettingsView({super.key});
@@ -38,6 +40,16 @@ class SettingsView extends StatelessWidget {
                   appName: MainApp.appCtrl.title);
             },
           ),
+          TuButton(
+            text: "Click me",
+            onPressed: () async {
+              showProgressSheet();
+              await sleep(2000);
+              gpop();
+              // context.goNamed('/settings');
+              pushTo(AboutView());
+            },
+          )
         ]),
       ),
     );
