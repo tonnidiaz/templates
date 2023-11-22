@@ -28,9 +28,12 @@ class _TuMaxAdViewState extends State<TuMaxAdView> {
     return Obx(() {
       final shouldShow = appCtrl.isVisible && route == appCtrl.currentRoute;
 
-      return !shouldShow || !appCtrl.applovinReady
-          ? none()
-          : MaxAdView(
+      return Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Visibility(
+            visible: shouldShow && appCtrl.applovinReady,
+            child: MaxAdView(
               visible: _ready,
               adUnitId: widget.unitId ?? appLovinBannerId,
               adFormat: AdFormat.banner,
@@ -52,7 +55,10 @@ class _TuMaxAdViewState extends State<TuMaxAdView> {
               }, onAdCollapsedCallback: (ad) {
                 clog("Banner collapsed");
               }),
-            );
+            ),
+          ),
+        ],
+      );
     });
   }
 }
