@@ -65,12 +65,23 @@ class RootView extends StatelessWidget {
             }
           },
           currentIndex: currIndex,
+          selectedItemColor: Colors.white,
           items: routes
+              .asMap()
+              .entries
               .map(
                 (e) => BottomNavigationBarItem(
-                  icon: e.icon,
-                  label: e.label,
-                ),
+                    icon: Container(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 5),
+                        decoration: BoxDecoration(
+                            color: currIndex == e.key
+                                ? colors.primaryFade
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(100)),
+                        child: e.value.icon),
+                    label: e.value.label,
+                    backgroundColor: colors.bg1),
               )
               .toList()),
     );

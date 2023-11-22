@@ -9,6 +9,10 @@ class AppCtrl extends GetxController {
   String get appId => _appId.value;
   set appId(String val) => _appId.value = val;
 
+  final _email = Rx<String>("tonnidiazed@gmail.com");
+  String get email => _email.value;
+  set email(String val) => _email.value = val;
+
   var isLoading = false.obs;
   void setIsLoading(bool val) {
     isLoading.value = val;
@@ -40,4 +44,8 @@ class AppCtrl extends GetxController {
     super.onInit();
     _getAppVersion();
   }
+
+  final _applovinReady = Rx<bool>(false);
+  bool get applovinReady => _applovinReady.value;
+  set applovinReady(bool val) => _applovinReady.value = val;
 }

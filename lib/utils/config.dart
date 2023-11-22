@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
 import 'package:tu/utils/functions.dart';
+import 'package:tuned/main.dart';
 
 const appLovinBannerId = "";
 
@@ -10,6 +11,7 @@ class TuAppLovin {
     try {
       await AppLovinMAX.initialize(
           "1tu7Mkwbm9nZmmC2Rtkh2bnxPBLl5VdRbHC3Uvx1NV_XazIn42DeRH0iS7VpkoJZTLaz_T4BzmT1m4VWRFJSDh");
+      MainApp.appCtrl.applovinReady = true;
     } catch (e) {
       clog('Failed to init AppLovin');
       clog(e);

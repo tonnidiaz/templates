@@ -1,37 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tuned/controllers/app_ctrl.dart';
-
 import 'package:tu/tu.dart';
 import 'package:tuned/utils/config.dart';
 import 'package:visibility_aware_state/visibility_aware_state.dart';
-
-import 'views/root/view.dart';
+import 'controllers/form_ctrl.dart';
+import 'routers/app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //setupWindowManager();
-  await TuAppLovin.config();
+  TuAppLovin.config();
+  clog("RUNNING APP...");
   runApp(const MainApp());
 }
-
-final router = GoRouter(initialLocation: '/', navigatorKey: Get.key, routes: [
-  ShellRoute(
-      builder: (context, state, child) => RootView(child: child),
-      routes: [
-        ...RootView.routes.map(
-          (e) => GoRoute(
-            name: e.to,
-            path: e.to,
-            builder: (context, state) => e.widget,
-          ),
-        ),
-      ]),
-]);
 
 class MainApp extends StatefulWidget {
   static AppCtrl appCtrl = Get.put(AppCtrl());
   static BarCtrl barCtrl = Get.put(BarCtrl());
+  static FormCtrl formCtrl = Get.put(FormCtrl());
   const MainApp({super.key});
 
   @override
@@ -39,15 +25,31 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends VisibilityAwareState<MainApp> {
+  final _router = AppRouter().router;
+
   void _init() {
     Get.put(AppCtrl());
     Get.put(BarCtrl());
   }
 
+  _onRouter() {
+    clog("On router");
+    try {
+      final currentRoute = _router.routerDelegate.currentConfiguration.fullPath;
+      if (currentRoute != MainApp.appCtrl.currentRoute) {
+        MainApp.appCtrl.currentRoute = currentRoute;
+      }
+    } catch (e) {
+      clog(e);
+    }
+  }
+
   @override
   void initState() {
     super.initState();
+    clog("MAIN APP INIT");
     _init();
+    _router.routerDelegate.addListener(_onRouter);
   }
 
   void _onVisibilityChanged(WidgetVisibility visibility) {
@@ -65,7 +67,7 @@ class _MainAppState extends VisibilityAwareState<MainApp> {
   Widget build(BuildContext context) {
     return Obx(
       () => MaterialApp.router(
-        routerConfig: router,
+        routerConfig: _router,
 
         theme: TuTheme(
                 context: context, colors: TuColors(), dark: Tu.appCtrl.darkMode)

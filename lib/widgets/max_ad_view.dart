@@ -2,6 +2,7 @@ import 'package:applovin_max/applovin_max.dart';
 import 'package:flutter/material.dart';
 import 'package:tu/tu.dart';
 import '../utils/config.dart';
+import '../utils/functions.dart';
 import '/main.dart';
 
 class TuMaxAdView extends StatefulWidget {
@@ -13,24 +14,36 @@ class TuMaxAdView extends StatefulWidget {
 }
 
 class _TuMaxAdViewState extends State<TuMaxAdView> {
+  late String route;
+  bool _ready = false;
+  @override
+  void initState() {
+    super.initState();
+    route = getRoute(context);
+  }
+
   @override
   Widget build(BuildContext context) {
+    final appCtrl = MainApp.appCtrl;
     return Obx(() {
-      final routeName = ModalRoute.of(context)?.settings.name;
-      final shouldShow = MainApp.appCtrl.isVisible &&
-          routeName == MainApp.appCtrl.currentRoute;
-      return !shouldShow
+      final shouldShow = appCtrl.isVisible && route == appCtrl.currentRoute;
+
+      return !shouldShow || !appCtrl.applovinReady
           ? none()
           : MaxAdView(
-              visible: false,
+              visible: _ready,
               adUnitId: widget.unitId ?? appLovinBannerId,
               adFormat: AdFormat.banner,
               listener: AdViewAdListener(onAdLoadedCallback: (ad) {
-                clog(
-                    "Banner Loaded: isCurr ${ModalRoute.of(context)?.isCurrent}");
+                clog('BANNER READY');
+                setState(() {
+                  _ready = true;
+                });
               }, onAdLoadFailedCallback: (adUnitId, error) {
                 clog("Banner Failed");
-
+                setState(() {
+                  _ready = false;
+                });
                 clog(error);
               }, onAdClickedCallback: (ad) {
                 clog("Banner clicked");
