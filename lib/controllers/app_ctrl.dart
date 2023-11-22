@@ -9,7 +9,7 @@ class AppCtrl extends GetxController {
   String get appId => _appId.value;
   set appId(String val) => _appId.value = val;
 
-  final _email = Rx<String>("tonnidiazed@gmail.com");
+  final _email = Rx<String>("tunedstreamz@gmail.com");
   String get email => _email.value;
   set email(String val) => _email.value = val;
 

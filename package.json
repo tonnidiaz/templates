@@ -1,9 +1,11 @@
 {
- 
-"license": "MIT",
-   "scripts": {
+    "license": "MIT",
+    "scripts": {
         "droid": "flutter run --debug",
         "linux": "flutter run --debug -d linux",
-        "build": "flutter build apk --target-platform android-arm --split-per-abi"
+        "build": "flutter build apk --target-platform android-arm --split-per-abi",
+        "change-pkg-name": "dart run change_app_package_name:main",
+        "rename": "dart run rename_app:main all='My App Name'",
+        "gen": "flutter_rust_bridge_codegen --rust-input rust/src/api.rs --dart-output lib/utils/bridge_generated.dart --dart-decl-output lib/utils/bridge_definitions.dart"
     }
 }
