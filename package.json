@@ -7,5 +7,8 @@
         "change-pkg-name": "dart run change_app_package_name:main",
         "rename": "dart run rename_app:main all='My App Name'",
         "gen": "flutter_rust_bridge_codegen --rust-input rust/src/api.rs --dart-output lib/utils/bridge_generated.dart --dart-decl-output lib/utils/bridge_definitions.dart"
+        ,"splash" : "dart run flutter_native_splash:create",
+        "appicon": "https://romannurik.github.io/AndroidAssetStudio/icons-launcher.html#foreground.type=image&foreground.space.trim=1&foreground.space.pad=0.2&foreColor=rgba(96%2C%20125%2C%20139%2C%200)&backColor=rgb(56%2C%20128%2C%20255)&crop=0&backgroundShape=circle&effects=none&name=ic_launcher"
+
     }
 }
