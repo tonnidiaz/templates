@@ -78,6 +78,7 @@ class FeedbackView extends StatelessWidget {
                       text: "Submit",
                       width: double.infinity,
                       bgColor: colors.secondary,
+                      color: Colors.white,
                       onPressed: () async {
                         if (formKey.currentState?.validate() == true) {
                           await ctrl.sendFeedback(data: form, context: context);

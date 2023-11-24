@@ -1,14 +1,35 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:tu/functions.dart';
+import 'package:tu/widgets/updates_view.dart';
 import 'package:tuned/controllers/app_ctrl.dart';
 import 'package:tu/tu.dart';
 import 'package:tuned/utils/config.dart';
 import 'package:visibility_aware_state/visibility_aware_state.dart';
 import 'controllers/form_ctrl.dart';
+import 'models/settings.dart';
 import 'routers/app.dart';
+import 'utils/constants.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //setupWindowManager();
+  await configIsar();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]);
+
+  ///FLUTTER DOWNLOADER
+  if (Platform.isAndroid || Platform.isIOS) {
+    await FlutterDownloader.initialize(
+        debug:
+            dev, // optional: set to false to disable printing logs to console (default: true)
+        ignoreSsl:
+            true // option: set to false to disable working with http links (default: false)
+        );
+  }
   TuAppLovin.config();
   clog("RUNNING APP...");
   runApp(const MainApp());
@@ -26,10 +47,46 @@ class MainApp extends StatefulWidget {
 
 class _MainAppState extends VisibilityAwareState<MainApp> {
   final _router = AppRouter().router;
+  final _appCtrl = MainApp.appCtrl;
+
+  _configApp() async {
+    /* Get/Create settings */
+    var settings = await isar.settings.get(1);
+    if (settings.isNullTu) {
+      settings = Settings();
+      await isar.writeTxn(() async {
+        isar.settings.put(settings!);
+      });
+    }
+    _appCtrl.autoCheckUpdates = settings!.autoCheckUpdates;
+
+    Tu.appCtrl.darkMode = settings.darkMode;
+    _appCtrl.ready = true;
+    clog('IS READY');
+    _checkUpdates(settings);
+  }
+
+  _checkUpdates(Settings settings) async {
+    if (settings.autoCheckUpdates) {
+      clog("Auto checking...");
+      final res = await checkUpdates(
+          appId: _appCtrl.appId,
+          appName: _appCtrl.title,
+          showLoader: false,
+          appVersion: await getAppVersion());
+      if (res != null) {
+        Get.bottomSheet(UpdatesView3(
+          update: res,
+          appName: _appCtrl.title,
+        ));
+      }
+    }
+  }
 
   void _init() {
     Get.put(AppCtrl());
     Get.put(BarCtrl());
+    _configApp();
   }
 
   _onRouter() {
@@ -66,15 +123,39 @@ class _MainAppState extends VisibilityAwareState<MainApp> {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => MaterialApp.router(
-        routerConfig: _router,
+      () => !_appCtrl.ready
+          ? const TuSplash()
+          : MaterialApp.router(
+              routerConfig: _router,
 
-        theme: TuTheme(
-                context: context, colors: TuColors(), dark: Tu.appCtrl.darkMode)
-            .theme(),
-        debugShowCheckedModeBanner: false,
-        //home: const Root(),
-      ),
+              theme: TuTheme(
+                      context: context,
+                      colors: TuColors(),
+                      dark: Tu.appCtrl.darkMode)
+                  .theme(),
+              debugShowCheckedModeBanner: false,
+              //home: const Root(),
+            ),
     );
+  }
+}
+
+class TuSplash extends StatelessWidget {
+  const TuSplash({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+        theme:
+            TuTheme(context: context, colors: TuColors(), dark: true).theme(),
+        home: Scaffold(
+          backgroundColor: colors.primary,
+          body: Center(
+            child: Text(
+              MainApp.appCtrl.title,
+              style: styles.h1(color: Colors.white),
+            ),
+          ),
+        ));
   }
 }

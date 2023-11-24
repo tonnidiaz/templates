@@ -46,6 +46,7 @@ class RootView extends StatelessWidget {
     var currIndex = routes.indexWhere((element) => element.to == routeName);
     currIndex = currIndex >= 0 ? currIndex : 0;
     return Scaffold(
+      drawer: Drawer(),
       body: WillPopScope(
           onWillPop: () async {
             if (routeName != routes[0].to) {
@@ -65,7 +66,7 @@ class RootView extends StatelessWidget {
             }
           },
           currentIndex: currIndex,
-          selectedItemColor: Colors.white,
+          //selectedItemColor: Colors.white,
           items: routes
               .asMap()
               .entries
@@ -81,7 +82,7 @@ class RootView extends StatelessWidget {
                             borderRadius: BorderRadius.circular(100)),
                         child: e.value.icon),
                     label: e.value.label,
-                    backgroundColor: colors.bg1),
+                    backgroundColor: colors.surface),
               )
               .toList()),
     );

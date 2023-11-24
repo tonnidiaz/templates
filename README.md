@@ -15,4 +15,8 @@ A Tu Flutter starter project
 - Import transparent img to it 
 - Scale it till its almost hittin the edges
 - Export to assets and run yarn splash
+
+- ### Android 12
+    - Create 960x960 proj
+    - Scale transparent img to almost half the size
     

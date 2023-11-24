@@ -48,4 +48,12 @@ class AppCtrl extends GetxController {
   final _applovinReady = Rx<bool>(false);
   bool get applovinReady => _applovinReady.value;
   set applovinReady(bool val) => _applovinReady.value = val;
+
+  final _ready = Rx<bool>(false);
+  bool get ready => _ready.value;
+  set ready(bool val) => _ready.value = val;
+
+  final _autoCheckUpdates = Rx<bool>(true);
+  bool get autoCheckUpdates => _autoCheckUpdates.value;
+  set autoCheckUpdates(bool val) => _autoCheckUpdates.value = val;
 }

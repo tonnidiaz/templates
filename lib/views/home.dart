@@ -10,7 +10,7 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     clog('HOME PAGE');
     return Scaffold(
-        appBar: AppBar(title: Text(MainApp.appCtrl.title)),
+        appBar: tuAppbar(title: Text(MainApp.appCtrl.title)),
         body: SizedBox(
           width: double.infinity,
           child: Column(
