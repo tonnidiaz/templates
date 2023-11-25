@@ -7,9 +7,11 @@ export const tuColors = {
     text: "rgba(255, 255, 255, 0.702)",
     text2: "rgba(255, 255, 255, .8)",
     primary: "rgba(101, 195, 200, 1)",
+    onPrimary: "rgba(255,255,255,.8)",
     secondary: "rgba(56, 128, 255, 1)",
-    primaryFade: "rgba(101, 195, 200, .5)",
+    primaryFade: "rgba(101, 195, 200, .3)",
     secondaryFade: "rgba(56, 128, 255, .5)",
+    primaryContainer: "rgb(25, 72, 75)"
 };
 export const tuStyles = StyleSheet.create({
     container: {

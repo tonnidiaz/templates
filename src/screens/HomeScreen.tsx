@@ -1,12 +1,13 @@
-import { View } from "react-native";
+import { StatusBar, View } from "react-native";
 import { Text } from "react-native-paper";
-import { tuStyles } from "../../src/utils/styles";
+import { tuColors, tuStyles } from "../../src/utils/styles";
 import TuButton from "@/components/TuButton";
 import { TuAppbar } from "@/components/Appbar";
 
 export const HomeScreen = () => {
     return (
         <>
+        
             <TuAppbar title="Home">
                 
             </TuAppbar>

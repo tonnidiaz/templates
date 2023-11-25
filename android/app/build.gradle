@@ -67,7 +67,7 @@ def enableProguardInReleaseBuilds = true
  * this variant is about 6MiB larger per architecture than default.
  */
 def jscFlavor = 'org.webkit:android-jsc:+'
-
+def archs = ["armeabi-v7a", "x86"]
 android {
     ndkVersion rootProject.ext.ndkVersion
 
@@ -115,7 +115,7 @@ android {
             reset()
             enable true
             universalApk false
-            include "armeabi-v7a"
+            include (*archs)
         }
     }
 }
