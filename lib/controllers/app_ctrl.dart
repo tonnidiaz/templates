@@ -1,4 +1,5 @@
 import 'package:tu/tu.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 class AppCtrl extends GetxController {
   final _title = Rx<String>("Tunedbass");
@@ -43,6 +44,12 @@ class AppCtrl extends GetxController {
   void onInit() {
     super.onInit();
     _getAppVersion();
+    ever(_ready, (val) {
+      if (val) {
+        /// REMOVE SPLASH SCREEN
+        FlutterNativeSplash.remove();
+      }
+    });
   }
 
   final _applovinReady = Rx<bool>(false);

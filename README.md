@@ -5,7 +5,7 @@ A Tu Flutter starter project
 ## Create appIcon
     
 - Go to [Adobe express](https://new.expressadobe.com/) and create 500x500 transparent bg Img
-- Go to: [icon.kitchen](https://icon.kitchen/i/H4sIAAAAAAAAAyWOPw%2BCMBDFv8tzZVAHE1iNuwObcTjstTS2HGmLxBC%2Bu4csl3e%2F5P1Z8KEwcUazwFB6tz1HRmMpZK5gXfsd9YWP5BgVOneVIEnJ4Xypazoqs%2B5OxvjBbRlFRjSnY4XkXV922UkpEncd2P7puvlu1vKraDdyT0ZmKI1iprDteYAGk8QbrfCS9c7c4bn%2BAOiSQfuyAAAA) and create and appIcon using that img
+- Go to: [icon.kitchen](https://icon.kitchen/i/H4sIAAAAAAAAAx2NMQ7DIBRD7%2BKubFWjirUX6JCt6gDhQ1AhPyLQqoq4eyCLZb%2FhecdXhUIb5A6j0mecKRJkToUErBv%2Fa1vwUTmCgHYPDpwauQy36TrdG7PuqYzxi%2BuKzCvkIJC8m%2FPZNOfM8ayBbGe1CkQ2JfTXF9RiEnvTTJ63lj%2FSeNcDPPd2i5gAAAA%3D) and create and appIcon using that img
 - Extract to android/.../res
 
 ## Create splash

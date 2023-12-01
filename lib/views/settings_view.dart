@@ -3,7 +3,7 @@ import 'package:tu/functions.dart';
 import 'package:tu/tu.dart';
 
 import '../main.dart';
-import '../models/settings.dart';
+import '../models/floor/settings.dart';
 import '../utils/constants.dart';
 
 class SettingsView extends StatefulWidget {
@@ -17,7 +17,7 @@ class _SettingsViewState extends State<SettingsView> {
   Settings? _appSettings;
 
   _init() async {
-    var res = await isar.settings.get(1);
+    var res = await db.settingsDao.findById(1);
     if (context.mounted) {
       setState(() {
         _appSettings = res;
@@ -50,9 +50,8 @@ class _SettingsViewState extends State<SettingsView> {
                     () => Switch(
                         value: Tu.appCtrl.darkMode,
                         onChanged: (val) async {
-                          await isar.writeTxn(() async {
-                            isar.settings.put(_appSettings!..darkMode = val);
-                          });
+                          await db.settingsDao
+                              .insertOne(_appSettings!..darkMode = val);
                           Tu.appCtrl.darkMode = val;
                         }),
                   )
@@ -75,10 +74,12 @@ class _SettingsViewState extends State<SettingsView> {
                   () => Switch(
                       value: appCtrl.autoCheckUpdates,
                       onChanged: (val) async {
-                        await isar.writeTxn(() async {
-                          isar.settings
-                              .put(_appSettings!..autoCheckUpdates = val);
-                        });
+                        _appSettings!.autoCheckUpdates = true;
+                        _appSettings.c
+                        await db.settingsDao.updateOne(_appSettings!);
+
+                        clog((await db.settingsDao.findAll())[0]
+                            .autoCheckUpdates);
                         appCtrl.autoCheckUpdates = val;
                       }),
                 )

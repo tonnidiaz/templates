@@ -15,21 +15,27 @@ dependencies:
   visibility_aware_state: ^1.0.5
   applovin_max: ^3.3.0
   go_router: ^12.1.1
-  isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   path_provider: ^2.1.1
     #git:
     #  url: https://github.com/tonnidiaz/flutter_tu.git
     #  ref: main
+  floor: ^1.4.2
+  file_picker: ^6.1.1
+  flutter_native_splash: ^2.3.6
+  objectbox: ^2.3.1
+  objectbox_flutter_libs: any
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
   change_app_package_name: ^1.1.0
   rename_app: ^1.3.1
-  flutter_native_splash: ^2.3.6
-  isar_generator: ^3.1.0+1
-  build_runner: ^2.4.6
+  
+  build_runner: ^2.4.7
+  floor_generator: ^1.4.0
+  objectbox_generator: any
   #flutter_launcher_icons: "^0.13.1"
 
 #flutter_launcher_icons:
@@ -39,13 +45,13 @@ dev_dependencies:
 #  min_sdk_android: 16 # android min sdk min:16, default 21
 
 flutter_native_splash:
-  color: "#2699A0"
+  color: "#1F6A70"
   image: "assets/images/splash.png"
   fullscreen: true
   #android_gravity: fill
 
   android_12:
-    icon_background_color: "#2699A0"
+    icon_background_color: "#1F6A70"
 
 flutter:
   uses-material-design: true
