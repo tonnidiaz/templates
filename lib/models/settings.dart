@@ -1,8 +1,9 @@
-@Entity()
+import 'package:isar/isar.dart';
+part 'settings.g.dart';
+
+@collection
 class Settings {
-  @Id()
-  int id = 0;
-  
-  bool darkMode = true;
+  Id id = Isar.autoIncrement;
   bool autoCheckUpdates = true;
+  bool darkMode = true;
 }

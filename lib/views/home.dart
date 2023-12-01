@@ -4,13 +4,14 @@ import 'dart:io';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:isar/isar.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:tu/functions.dart';
 import 'package:tu/tu.dart';
 import 'package:path/path.dart' as pth;
-import 'package:tuned/floor/db.dart';
 import 'package:tuned/main.dart';
 
+import '../models/settings.dart';
 import '../utils/constants.dart';
 
 class HomeView extends StatefulWidget {
@@ -33,10 +34,7 @@ class _HomeViewState extends State<HomeView> {
       );
       if (saveDir == null) return;
       clog("Save dir: $saveDir");
-      _formCtrl.setForm({
-        "filename":
-            db.database.database.path.split("/").last.replaceAll(".db", "")
-      });
+      _formCtrl.setForm({"filename": isar.name.replaceAll(".isar", "")});
 
       Get.dialog(TuDialogView(
         isForm: true,
@@ -51,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
                 _formCtrl.setFormField('filename', val);
               },
               value: _formCtrl.form['filename'],
-              suffix: const Text(".db"),
+              suffix: const Text(".isar"),
               required: true,
               hasBorder: false,
             ),
@@ -61,14 +59,13 @@ class _HomeViewState extends State<HomeView> {
         onOk: () async {
           gpop();
           final savePath =
-              pth.join(saveDir, "${_formCtrl.form['filename']}.db");
+              pth.join(saveDir, "${_formCtrl.form['filename']}.isar");
           clog("SAVED AT: $savePath");
           if (await File(savePath).exists()) {
             await File(savePath).delete();
             clog("FILE DELETED");
           }
-          await File(db.database.database.path).copy(savePath);
-
+          await isar.copyToFile(savePath);
           showToast("DB backed up").show(getCtx());
         },
       ));
@@ -83,33 +80,34 @@ class _HomeViewState extends State<HomeView> {
       if (!(await requestStoragePermission())) return;
       final res = await FilePicker.platform.pickFiles();
       if (res != null) {
-        final file = res.files[0];
+        final db = res.files[0];
 
-        if (file.name.endsWith('.db')) {
+        if (db.name.endsWith('.isar')) {
           final newDir = Directory(pth.join(
               (await getExternalStorageDirectory())!.path, "db", "backup"));
 
-          final newFilename = db.database.database.path.split("/").last;
-          final dbCopy = File(file.path!);
+          final newFilename = "${isar.name}.backup.isar";
+          final dbCopy = File(db.path!);
 
+          // Create newDir if no exists
           if (!(await newDir.exists())) {
             await newDir.create(recursive: true);
             clog("DIR CREATED");
           }
-          final newPath = await dbCopy.copy(pth.join(newDir.path, newFilename));
-          final mDB =
-              await $FloorAppDatabase.databaseBuilder(newPath.path).build();
-          clog((await mDB.settingsDao.findAll()).length);
-          clog("DB PATH: ${mDB.database.database.path}");
-          mDB.close();
+          await dbCopy.copy(pth.join(newDir.path, newFilename));
+          final mIsar = await Isar.open([SettingsSchema],
+              directory: newDir.path,
+              name: newFilename.replaceAll(".isar", ""));
+          mIsar.close();
 
           showToast("DB RESTORED").show(getCtx());
         } else {
-          showToast("Filename must end with .db", isErr: true).show(getCtx());
+          showToast("Filename must end with .isar", isErr: true).show(getCtx());
         }
       }
     } catch (e) {
       clog(e);
+      showToast('Failed to restore db', isErr: true).show(Get.overlayContext!);
     }
   }
 

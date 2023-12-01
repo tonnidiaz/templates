@@ -10,8 +10,7 @@ import 'package:tu/tu.dart';
 import 'package:tuned/utils/config.dart';
 import 'package:visibility_aware_state/visibility_aware_state.dart';
 import 'controllers/form_ctrl.dart';
-import 'floor/config.dart';
-import 'models/floor/settings.dart';
+import 'models/settings.dart';
 import 'routers/app.dart';
 import 'utils/constants.dart';
 
@@ -19,7 +18,7 @@ void main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: binding);
   //setupWindowManager();
-  await configFloor();
+  await configIsar();
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -54,15 +53,12 @@ class _MainAppState extends VisibilityAwareState<MainApp> {
 
   _configApp() async {
     /* Get/Create settings */
-    var settings = await db.settingsDao.findById(1);
-    clog("SETTINGS: $settings");
+    var settings = await isar.settings.get(1);
     if (settings.isNullTu) {
-      /* settings = Settings();
+      settings = Settings();
       await isar.writeTxn(() async {
         isar.settings.put(settings!);
-      }); */
-      settings = Settings();
-      await db.settingsDao.insertOne(settings);
+      });
     }
     _appCtrl.autoCheckUpdates = settings!.autoCheckUpdates;
 

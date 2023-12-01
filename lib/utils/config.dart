@@ -2,10 +2,12 @@ import 'dart:math';
 
 import 'package:applovin_max/applovin_max.dart';
 import 'package:isar/isar.dart';
+import 'package:path/path.dart' as pth;
 import 'package:path_provider/path_provider.dart';
 import 'package:tu/utils/functions.dart';
 import 'package:tuned/main.dart';
 
+import '../models/settings.dart';
 import 'constants.dart';
 
 const appLovinBannerId = "";
@@ -62,4 +64,15 @@ class TuAppLovin {
     // Load the first interstitial
     AppLovinMAX.loadInterstitial(interstitialId);
   }
+}
+
+Future configIsar() async {
+  final dir = await getExternalStorageDirectory();
+  isar = await Isar.open([SettingsSchema],
+      name: "app",
+      directory: pth.join(
+          dir!.path, "db") // (await getApplicationDocumentsDirectory()).path,
+      );
+  clog(isar.path);
+  clog("ISAR CONFIGURED");
 }
