@@ -1,12 +1,13 @@
 import 'package:tu/tu.dart';
 
 class FormCtrl extends GetxController {
-  final form = RxMap<String, dynamic>();
-  void setFormField(String key, dynamic val) {
-    form.value = {...form, key: val};
-  }
+  final _form = Rx<Map<String, dynamic>>({});
+  Map<String, dynamic> get form => _form.value;
+  set form(Map<String, dynamic> val) => _form.value = val;
 
   void setForm(Map<String, dynamic> val) {
-    form.value = val;
+    _form.value = val;
   }
+
+  void setFormField(String key, dynamic val) => _form.value[key] = val;
 }

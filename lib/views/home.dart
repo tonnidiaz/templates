@@ -1,19 +1,9 @@
-import 'dart:convert';
-import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:isar/isar.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:tu/functions.dart';
 import 'package:tu/tu.dart';
-import 'package:path/path.dart' as pth;
 import 'package:tuned/main.dart';
-import 'package:tuned/utils/functions.dart';
 
-import '../models/settings.dart';
-import '../utils/constants.dart';
+import '../utils/isar.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
