@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:ffmpeg_helper/ffmpeg_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:media_kit/media_kit.dart';
 //import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:tu/functions.dart';
 import 'package:tu/widgets/updates_view.dart';
@@ -20,17 +22,22 @@ import 'utils/constants.dart';
 
 void main() async {
   final binding = WidgetsFlutterBinding.ensureInitialized();
-  unawaited(MobileAds.instance.initialize());
 
   if (Platform.isAndroid || Platform.isIOS) {
+    unawaited(MobileAds.instance.initialize());
     FlutterNativeSplash.preserve(widgetsBinding: binding);
     await SystemChrome.setPreferredOrientations([
       //DeviceOrientation.portraitUp,
     ]);
   }
 
-  //setupWindowManager();
   await configIsar();
+
+  // Init video player
+  MediaKit.ensureInitialized();
+
+  // Init ffmpeg helper
+  await FFMpegHelper.instance.initialize();
 
   ///FLUTTER DOWNLOADER
   if (Platform.isAndroid || Platform.isIOS) {
@@ -109,7 +116,7 @@ class _MainAppState extends VisibilityAwareState<MainApp> {
   }
 
   void _onVisibilityChanged(WidgetVisibility visibility) {
-    clog("VISIBILITY CHANGED: ${visibility.toString()}");
+    // clog("VISIBILITY CHANGED: ${visibility.toString()}");
     MainApp.appCtrl.isVisible = visibility == WidgetVisibility.VISIBLE;
   }
 

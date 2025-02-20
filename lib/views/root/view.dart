@@ -83,14 +83,23 @@ class DesktopRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final routes = RootView.routes;
+    final ctrl = RootView.ctrl;
+
     return Scaffold(
         appBar: AppBar(
           backgroundColor: colors.surface,
+          title: const Text("Tu player"),
         ),
-        body: const Row(
+        body: Row(
           children: [
-            /* TuSidebar(routeName: routeName, currIndex: currIndex),
-            Expanded(child: child) */
+            TuSidebar(
+              routeName: '/',
+              currIndex: ctrl.currentTab,
+            ),
+            Expanded(
+                child: Obx(
+                    () => RootView.routes.elementAt(ctrl.currentTab).widget)),
           ],
         ));
   }

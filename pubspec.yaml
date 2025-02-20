@@ -22,6 +22,12 @@ dependencies:
   isar: ^3.1.0+1
   isar_flutter_libs: ^3.1.0+1
   google_mobile_ads: ^4.0.0
+  media_kit: ^1.1.11 # Primary package.
+  media_kit_video: ^1.2.5 # For video rendering.
+  media_kit_libs_video: ^1.0.5 # Native video dependencies.
+  ffmpeg_kit_flutter: ^6.0.3
+  video_preview_thumbnails: ^0.1.0
+  ffmpeg_helper: ^1.0.1
 
 dev_dependencies:
   flutter_test:
