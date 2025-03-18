@@ -18,8 +18,11 @@ jobs:
       - name: Clean Flutter Project
         run: flutter clean
 
+      - name: Create required assets dirs
+        run: mkdir -p assets/bin/win/ffmpeg assets/bin/macos/ffmpeg assets/bin/linux/ffmpeg
+
       - name: Download FFMPEG binary
-        run: mkdir -p assets/bin/win/ffmpeg && curl -L -o assets/bin/win/ffmpeg/ffmpeg.exe "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffprobe-win32-x64"
+        run: curl -L -o assets/bin/win/ffmpeg/ffmpeg.exe "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffprobe-win32-x64"
       - name: Fetch packages
         run: flutter pub get
       - name: Verify Installed Packages

@@ -45,4 +45,4 @@ app.*.map.json
 
 dist
 binaries
-assets/bin
+assets/bin/
