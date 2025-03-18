@@ -1,0 +1,35 @@
+name: "Build windows bundle"
+on: [push]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    #   - run: echo "FLUTTER_VERSION=$(flutter --version | grep -o '[0-9]*\.[0-9]*\.[0-9]*')" >> $GITHUB_ENV
+    #   - run: echo "Using Flutter version $FLUTTER_VERSION"
+      - uses: actions/checkout@v3
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: "3.13.9"
+          cache: true
+
+      - name: Check Flutter Installation
+        run: flutter --version
+      - name: Clean Flutter Project
+        run: flutter clean
+
+      - name: Download FFMPEG binary
+        run: mkdir -p assets/bin/win/ffmpeg && curl -L -o assets/bin/win/ffmpeg/ffmpeg.exe "https://github.com/eugeneware/ffmpeg-static/releases/download/b6.0/ffprobe-win32-x64"
+      - name: Fetch packages
+        run: flutter pub get
+      - name: Verify Installed Packages
+        run: flutter pub get && flutter pub deps
+
+      - name: Build the windows app
+        run: flutter build windows --release
+
+      - name: Upload the flutter app
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-build
+          path: build/windows/runner/Release/

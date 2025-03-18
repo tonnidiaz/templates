@@ -1,0 +1,41 @@
+display_name: Tu Player
+package_name: tu-player
+maintainer:
+  name: Tonni Diaz
+  email: tunedstreamz@gmail.com
+priority: optional
+section: x11
+installed_size: 6604
+essential: false
+# icon: assets/logo.png
+
+postinstall_scripts:
+  - echo "Installing a Tu app..."
+postuninstall_scripts:
+  - echo "Surprised Pickachu face"
+
+keywords:
+  - Hello
+  - World
+  - Test
+  - Application
+
+generic_name: Video Application
+categories:
+  - Video
+  - Media
+
+# supported mime types that can be opened using this application
+supported_mime_type:
+  - audio/mpeg
+  - video/mp4v-es
+  - video/mp4
+  - video/mkv
+  - video/ts
+  - video/avi
+  - video/webp
+  - video/mov
+startup_notify: true
+# You can also specify [metainfo](https://freedesktop.org/software/appstream/docs/chap-Quickstart.html) file
+# which contains metadata of the app.
+# metainfo: linux/packaging/myappid.appdata.xml
